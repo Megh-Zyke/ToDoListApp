@@ -14,21 +14,29 @@ struct ListView: View {
   
     
     var body: some View {
-        List {
-            ForEach(listViewModel.items) {
-                item in
-                ListRowView(item: item)
-                    .onTapGesture {
-                         
-                            listViewModel.updateItem(item: item)
-                        
-                    }
+        
+        ZStack{
+            if listViewModel.items.isEmpty {
+                noItemsView()
             }
-            .onDelete(perform: listViewModel.deleteItem)
-            .onMove(perform: listViewModel.moveItem)
+            else{
+                List {
+                    ForEach(listViewModel.items) {
+                        item in
+                        ListRowView(item: item)
+                            .onTapGesture {
+                                 
+                                    listViewModel.updateItem(item: item)
+                                
+                            }
+                    }
+                    .onDelete(perform: listViewModel.deleteItem)
+                    .onMove(perform: listViewModel.moveItem)
 
+                }
+                .listStyle(DefaultListStyle())
+            }
         }
-        .listStyle(DefaultListStyle())
         .navigationTitle("To Do List 📝")
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
