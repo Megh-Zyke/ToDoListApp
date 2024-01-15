@@ -65,3 +65,5 @@ In the context of SwiftUI, the MVVM pattern is often implemented using `@Observe
 
 
 ## Screenshots
+
+![To Do App](ToDoList-ezgif.com-video-to-gif-converter.gif)
